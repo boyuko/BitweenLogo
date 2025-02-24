@@ -5,14 +5,14 @@ float rectLength = 200;
 float centerRectLength = 360;
 float edge = 900;
 
-float delay1 = 0.0, delay2 = 0.2, delay3 = 0.4, delay4 = 0.6; // 延遲時間
+float delay1 = 0.0, delay2 = 0.5, delay3 = 1.0, delay4 = 0.5,delay5=1.0,delay6=1.5,delay7 =1.0,delay8=1.5,delay9=2.0,delay10= 1.5, delay11=2.0,delay12=2.5; // 延遲時間
 
 float direction=1;
 float x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4;
 float targetX1, targetY1, targetZ1, targetX2, targetY2, targetZ2, targetX3, targetY3, targetZ3, targetX4, targetY4, targetZ4;
 float startX1, startY1, startZ1, startX2, startY2, startZ2, startX3, startY3, startZ3, startX4, startY4, startZ4;
 
-float lerpTime = 1.0;
+float lerpTime = 0.5;
 float startTime;
 boolean isLerping = false;
 boolean needsNewTarget = false;
@@ -38,11 +38,28 @@ void draw() {
     float t2 = constrain((currentTime - startTime - delay2 * 1000) / (lerpTime * 1000), 0, 1);
     float t3 = constrain((currentTime - startTime - delay3 * 1000) / (lerpTime * 1000), 0, 1);
     float t4 = constrain((currentTime - startTime - delay4 * 1000) / (lerpTime * 1000), 0, 1);
+    float t5 = constrain((currentTime - startTime - delay5 * 1000) / (lerpTime * 1000), 0, 1);
+    float t6 = constrain((currentTime - startTime - delay6 * 1000) / (lerpTime * 1000), 0, 1);
+    float t7 = constrain((currentTime - startTime - delay7 * 1000) / (lerpTime * 1000), 0, 1);
+    float t8 = constrain((currentTime - startTime - delay8 * 1000) / (lerpTime * 1000), 0, 1);
+    float t9 = constrain((currentTime - startTime - delay9 * 1000) / (lerpTime * 1000), 0, 1);
+    float t10 = constrain((currentTime - startTime - delay10 * 1000) / (lerpTime * 1000), 0, 1);
+    float t11= constrain((currentTime - startTime - delay11 * 1000) / (lerpTime * 1000), 0, 1);
+    float t12 = constrain((currentTime - startTime - delay12 * 1000) / (lerpTime * 1000), 0, 1);
 
     t1 = easeInOut(t1);
     t2 = easeInOut(t2);
     t3 = easeInOut(t3);
     t4 = easeInOut(t4);
+    t5 = easeInOut(t5);
+    t6 = easeInOut(t6);
+    t7 = easeInOut(t7);
+    t8 = easeInOut(t8);
+    t9 = easeInOut(t9);
+    t10 = easeInOut(t10);
+    t11 = easeInOut(t11);
+    t12 = easeInOut(t12);
+
     /*
     float t = (millis() - startTime) / (lerpTime * 1000.0);
      if (t >= 1.0) {
@@ -53,23 +70,23 @@ void draw() {
      
      t = easeInOut(t);*/
     x1 = lerp(startX1, targetX1, t1);
-    y1 = lerp(startY1, targetY1, t1);
-    z1 = lerp(startZ1, targetZ1, t1);
+    y1 = lerp(startY1, targetY1, t2);
+    z1 = lerp(startZ1, targetZ1, t3);
 
 
-    x2 = lerp(startX2, targetX2, t3);
-    y2 = lerp(startY2, targetY2, t3);
-    z2 = lerp(startZ2, targetZ2, t3);
+    x2 = lerp(startX2, targetX2, t4);
+    y2 = lerp(startY2, targetY2, t5);
+    z2 = lerp(startZ2, targetZ2, t6);
 
-    x3 = lerp(startX3, targetX3, t2);
-    y3 = lerp(startY3, targetY3, t2);
-    z3 = lerp(startZ3, targetZ3, t2);
+    x3 = lerp(startX3, targetX3, t7);
+    y3 = lerp(startY3, targetY3, t8);
+    z3 = lerp(startZ3, targetZ3, t9);
 
-    x4 = lerp(startX4, targetX4, t4);
-    y4 = lerp(startY4, targetY4, t4);
-    z4 = lerp(startZ4, targetZ4, t4);
+    x4 = lerp(startX4, targetX4, t10);
+    y4 = lerp(startY4, targetY4, t11);
+    z4 = lerp(startZ4, targetZ4, t12);
 
-    if (t4 >= 1.0) {
+    if (t12 >= 1.0) {
       isLerping = false;
       needsNewTarget = true; // 延遲更新目標
     }

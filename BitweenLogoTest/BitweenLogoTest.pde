@@ -75,16 +75,27 @@ void draw() {
 
   // 計算兩條線的交點
   float denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
-
+  float interX = 0;
+  float interY = 0;
   if (denom != 0) {
-    float interX = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) / denom;
-    float interY = ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) / denom;
+    interX = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) / denom;
+    interY = ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) / denom;
     
     // 在交點處畫一個小矩形
     noStroke();
     //rect(interX, interY, centerRectLength, centerRectLength); // 以交點為中心
     
   }
+  /*
+  float centerX1 = interX+centerRectLength/2;
+  float centerY1 = interY-centerRectLength/2;
+  float centerX2 = interX+centerRectLength/2;
+  float centerY2 = interY+centerRectLength/2;
+  float centerX3 = interX-centerRectLength/2;
+  float centerY3 = interY+centerRectLength/2;
+  float centerX4 = interX-centerRectLength/2;
+  float centerY4 = interY-centerRectLength/2;
+  */
   
   
   float centerX1 = (3*x1+x2)/4;
@@ -95,6 +106,7 @@ void draw() {
   float centerY3 = (y1+3*y2)/4;
   float centerX4 = (x3+3*x4)/4;
   float centerY4 = (y3+3*y4)/4;
+  
   
   
 
@@ -123,7 +135,7 @@ void draw() {
   bezierVertex(x1-rectLength/2,y1+rectLength/2,centerX1,centerY1,(centerX1+centerX2)/2,(centerY1+centerY2)/2);
   vertex((centerX1+centerX4)/2,(centerY1+centerY4)/2);
   bezierVertex(centerX1,centerY1,x1-rectLength/2,y1+rectLength/2,x1-rectLength/2,y1);
-    endShape(); 
+  endShape(); 
 
   beginShape();
   vertex(x3-rectLength/2,y3);

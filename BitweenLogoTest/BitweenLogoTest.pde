@@ -7,7 +7,7 @@ float edge = 900;
 
 float direction=1;
 void setup() {
-  size(1200,1200);
+  size(1200,1200,P3D);
   rectMode(CENTER); // 設定矩形的繪製模式為中心
 }
 

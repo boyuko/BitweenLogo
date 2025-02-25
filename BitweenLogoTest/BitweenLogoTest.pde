@@ -1,3 +1,7 @@
+import spout.*;
+
+Spout spout;
+
 float rectX = 0f;
 float circleY = 0f;
 
@@ -8,7 +12,23 @@ float edge = 900;
 float delay1 = 0.0, delay2 = 0.5, delay3 = 1.0, delay4 = 0.5, delay5=1.0, delay6=1.5, delay7 =1.0, delay8=1.5, delay9=2.0, delay10= 1.5, delay11=2.0, delay12=2.5; // 延遲時間
 
 float direction=1;
-float x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4;
+//float x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4;
+float x1 = -rectLength / 2+edge;
+float y1 = rectLength / 2;
+float z1 = 0;
+
+float x2 = rectLength / 2;
+float y2 = edge - rectLength / 2;
+float z2 =0;
+
+float x3 = edge - rectLength / 2;
+float y3 = -rectLength / 2+edge;
+float z3 = 0;
+
+float x4 = rectLength / 2;
+float y4 = rectLength / 2;
+float z4 =0;
+
 float targetX1, targetY1, targetZ1, targetX2, targetY2, targetZ2, targetX3, targetY3, targetZ3, targetX4, targetY4, targetZ4;
 float startX1, startY1, startZ1, startX2, startY2, startZ2, startX3, startY3, startZ3, startX4, startY4, startZ4;
 
@@ -21,6 +41,8 @@ boolean needsNewTarget = false;
 
 
 void setup() {
+   spout = new Spout(this);
+  spout.setSenderName("Spout Sender");
   size(900, 900, P3D);
   smooth();
   rectMode(CENTER); // 設定矩形的繪製模式為中心
@@ -99,6 +121,9 @@ void draw() {
     generatePositions();
     needsNewTarget = false;
   }
+
+  // x1 = mouseX;
+  //y1 = mouseY;
 
   strokeWeight(20);
 
@@ -239,6 +264,9 @@ void draw() {
 
   rectX = (cos(frameCount * 0.01) / 2 + 0.5) * (edge - rectLength);
   circleY = (sin(frameCount * 0.01) / 2 + 0.5) * (edge - rectLength);
+  
+      spout.sendTexture();
+
 }
 
 float speed = 0.01;  // 控制擺動速度

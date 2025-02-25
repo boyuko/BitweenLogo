@@ -5,7 +5,7 @@ float rectLength = 200;
 float centerRectLength = 360;
 float edge = 900;
 
-float delay1 = 0.0, delay2 = 0.5, delay3 = 1.0, delay4 = 0.5,delay5=1.0,delay6=1.5,delay7 =1.0,delay8=1.5,delay9=2.0,delay10= 1.5, delay11=2.0,delay12=2.5; // 延遲時間
+float delay1 = 0.0, delay2 = 0.5, delay3 = 1.0, delay4 = 0.5, delay5=1.0, delay6=1.5, delay7 =1.0, delay8=1.5, delay9=2.0, delay10= 1.5, delay11=2.0, delay12=2.5; // 延遲時間
 
 float direction=1;
 float x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4;
@@ -18,15 +18,18 @@ boolean isLerping = false;
 boolean needsNewTarget = false;
 
 
+
+
 void setup() {
-  size(1200, 1200, P3D);
+  size(900, 900, P3D);
+  smooth();
   rectMode(CENTER); // 設定矩形的繪製模式為中心
 }
 
 void draw() {
   background(0);
 
-  translate(150, 150);
+  //translate(150, 150);
 
 
   fill(255);
@@ -228,7 +231,6 @@ void draw() {
   // 畫線
   //line(x1, y1, z1, x2, y2, z2);
   //line(x3, y3, z3, x4, y4, z4);
-  rect(450, 450, 900, 900);
 
 
 

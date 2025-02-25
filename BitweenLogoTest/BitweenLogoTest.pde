@@ -1,7 +1,3 @@
-import spout.*;
-
-Spout spout;
-
 float rectX = 0f;
 float circleY = 0f;
 
@@ -41,8 +37,6 @@ boolean needsNewTarget = false;
 
 
 void setup() {
-   spout = new Spout(this);
-  spout.setSenderName("Spout Sender");
   size(900, 900, P3D);
   smooth();
   rectMode(CENTER); // 設定矩形的繪製模式為中心
@@ -85,15 +79,7 @@ void draw() {
     t11 = easeInOut(t11);
     t12 = easeInOut(t12);
 
-    /*
-    float t = (millis() - startTime) / (lerpTime * 1000.0);
-     if (t >= 1.0) {
-     t = 1.0;
-     isLerping = false;
-     needsNewTarget = true; // 延遲更新目標
-     }
-     
-     t = easeInOut(t);*/
+/*
     x1 = lerp(startX1, targetX1, t1);
     y1 = lerp(startY1, targetY1, t2);
     z1 = lerp(startZ1, targetZ1, t3);
@@ -115,6 +101,7 @@ void draw() {
       isLerping = false;
       needsNewTarget = true; // 延遲更新目標
     }
+    */
   }
 
   if (needsNewTarget) {
@@ -177,6 +164,11 @@ void draw() {
    float centerX4 = interX-centerRectLength/2;
    float centerY4 = interY-centerRectLength/2;
    */
+   
+   z1 = -offset(0, 0.02);
+   z2 = -offset(PI, 0.02 );
+   z3 = -offset(PI/7, 0.03);
+   z4 = -offset(PI/7+PI, 0.03);
 
 
   float centerX1 = (3*x1+x2)/4;
@@ -265,15 +257,13 @@ void draw() {
   rectX = (cos(frameCount * 0.01) / 2 + 0.5) * (edge - rectLength);
   circleY = (sin(frameCount * 0.01) / 2 + 0.5) * (edge - rectLength);
   
-      spout.sendTexture();
-
 }
 
-float speed = 0.01;  // 控制擺動速度
+//float speed = 0.01;  // 控制擺動速度
 float amplitude = 500; // 最大擺動範圍
 int lastCycle = 0; // 記錄上一個 sin 波完成的循環次數
 
-float offset(float timeOffset) {
+float offset(float timeOffset, float speed) {
   float tempOffset = sin(-PI/2+frameCount * speed + timeOffset)/2+0.5; // 範圍 [-1, 1]
 
   // 計算當前的循環次數（完整的 sin 週期 = 2PI）
